@@ -1,0 +1,25 @@
+{
+  "name": "camji-child",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "wp-scripts start --webpack-src-dir=src --output-path=build",
+    "build": "wp-scripts build --webpack-src-dir=src --output-path=build",
+    "lint:js": "wp-scripts lint-js src/js",
+    "lint:css": "wp-scripts lint-style src/scss",
+    "lint": "wp-scripts lint-js src/js && wp-scripts lint-style src/scss"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@wordpress/scripts": "^32.4.1",
+    "browser-sync": "^3.0.4",
+    "browser-sync-webpack-plugin": "^2.4.0",
+    "copy-webpack-plugin": "^14.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "path": "^0.12.7",
+    "webpack-remove-empty-scripts": "^1.1.1"
+  }
+}
