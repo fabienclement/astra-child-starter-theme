@@ -1,3 +1,20 @@
 {
-	"extends": ["@wordpress/stylelint-config"]
+	"extends": ["@wordpress/stylelint-config/scss"],
+	"rules": {
+		"selector-class-pattern": [
+			"^([a-z][a-z0-9]*)(-[a-z0-9]+)*(__([a-z][a-z0-9]*)(-[a-z0-9]+)*)*(--([a-z][a-z0-9]*)(-[a-z0-9]+)*)*$",
+			{
+				"message": "Selector should use lowercase and hyphens, plus BEM __element and --modifier (selector-class-pattern)"
+			}
+		]
+	},
+	"overrides": [
+		{
+			"files": [],
+			"rules": {
+				"selector-class-pattern": null,
+				"selector-id-pattern": null
+			}
+		}
+	]
 }

@@ -16,6 +16,10 @@ const PROXY_URL = 'https://site.local';
 module.exports = {
 	...defaultConfig,
 	devtool: isProd ? false : 'source-map',
+	// jQuery vient de WordPress : webpack ne l'empaquette pas.
+	externals: {
+		jquery: 'jQuery',
+	},
 	...{
 		entry: {
 			'js/main': path.resolve(process.cwd(), 'src/js', 'main.js'),

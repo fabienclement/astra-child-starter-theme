@@ -1,4 +1,6 @@
 /** Main styles */
-body {
-	background: #008080 !important;
+
+/* Preuve que la chaîne Sass compile. Cette classe n'existe sur aucune page. */
+.build-check {
+	color: #008080;
 }
