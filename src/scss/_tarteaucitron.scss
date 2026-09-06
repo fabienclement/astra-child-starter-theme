@@ -1,0 +1,14 @@
+/**
+ * Le panneau de consentement de Tarteaucitron.
+ *
+ * La bibliothèque charge sa feuille de styles depuis son propre dossier, donc
+ * après celle du thème. Elle y pose `color: #333` et `font-size: 14px` sur tous
+ * les descendants du panneau. Les deux valeurs reviennent ici à celles du site.
+ *
+ * Le sélecteur porte un `body` de plus que le sien, pour passer devant.
+ */
+
+body #tarteaucitronRoot * {
+	color: inherit;
+	font-size: inherit;
+}

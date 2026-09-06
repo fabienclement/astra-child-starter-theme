@@ -14,3 +14,4 @@
  * One file per subject in inc/. Add its line here when you create one.
  */
 require_once get_stylesheet_directory() . '/inc/enqueue.php';
+require_once get_stylesheet_directory() . '/inc/tarteaucitron.php';
