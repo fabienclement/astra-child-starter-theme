@@ -32,6 +32,27 @@ module.exports = {
 			}),
 			new CopyWebpackPlugin({
 				patterns: [
+					// Tarteaucitron reste hors du paquet : il déduit son dossier
+					// de document.currentScript, puis y cherche sa langue, son
+					// catalogue de services et sa feuille de styles. Le script
+					// minifié charge les autres fichiers en .min.
+					...[
+						'tarteaucitron.min.js',
+						'tarteaucitron.services.min.js',
+						'css/tarteaucitron.min.css',
+						'lang/tarteaucitron.fr.min.js',
+					].map((file) => ({
+						from: path.resolve(
+							process.cwd(),
+							'node_modules/tarteaucitronjs',
+							file
+						),
+						to: path.resolve(
+							process.cwd(),
+							'build/tarteaucitron',
+							file
+						),
+					})),
 					{
 						from: path.resolve(process.cwd(), 'assets'),
 						to: path.resolve(process.cwd(), 'build/assets'),
