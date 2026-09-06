@@ -99,13 +99,13 @@ function astra_child_starter_tarteaucitron_enqueue() {
 	}
 
 	wp_enqueue_script(
-		'tarteaucitron',
+		'astra-child-starter-tarteaucitron',
 		get_stylesheet_directory_uri() . $file,
 		array(),
 		ASTRA_CHILD_STARTER_TARTEAUCITRON_VERSION,
 		false
 	);
 
-	wp_add_inline_script( 'tarteaucitron', astra_child_starter_tarteaucitron_boot(), 'after' );
+	wp_add_inline_script( 'astra-child-starter-tarteaucitron', astra_child_starter_tarteaucitron_boot(), 'after' );
 }
 add_action( 'wp_enqueue_scripts', 'astra_child_starter_tarteaucitron_enqueue' );
