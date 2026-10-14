@@ -1,0 +1,59 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(php -l:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run lint)",
+      "Bash(npm run lint:js:*)",
+      "Bash(npm run lint:css:*)",
+      "Bash(composer lint:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch:*)",
+      "Bash(rg:*)",
+      "Bash(find:*)"
+    ],
+    "deny": [
+      "Bash(wp db reset:*)",
+      "Bash(wp db drop:*)",
+      "Read(./node_modules/**)",
+      "Read(./vendor/composer/**)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '## Git (thème)'; git branch --show-current; git status --short . | head -10"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=$(jq -r '.tool_input.file_path // empty'); case \"$f\" in *.php) php -l \"$f\" >/dev/null 2>&1 || { echo \"php -l a échoué sur $f : erreur de syntaxe, le site tombera en erreur fatale.\" >&2; exit 2; } ;; esac"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=$(jq -r '.tool_input.file_path // empty'); case \"$f\" in */inc/*.php) r=\"${f#\"$CLAUDE_PROJECT_DIR\"/}\"; grep -qF \"$r\" \"$CLAUDE_PROJECT_DIR/functions.php\" || { echo \"$r est neuf : ajoute son require_once dans functions.php, sinon WordPress ne le charge pas.\" >&2; exit 2; } ;; esac"
+          }
+        ]
+      }
+    ]
+  }
+}
