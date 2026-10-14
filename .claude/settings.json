@@ -17,8 +17,6 @@
       "Bash(find:*)"
     ],
     "deny": [
-      "Bash(wp db reset:*)",
-      "Bash(wp db drop:*)",
       "Read(./node_modules/**)",
       "Read(./vendor/composer/**)"
     ]
