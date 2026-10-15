@@ -8,7 +8,8 @@
     "build": "wp-scripts build --webpack-src-dir=src --output-path=build",
     "lint:js": "wp-scripts lint-js src/js",
     "lint:css": "wp-scripts lint-style 'src/**/*.scss'",
-    "lint": "wp-scripts lint-js src/js && wp-scripts lint-style 'src/**/*.scss' && composer lint",
+    "lint:md": "prettier --check '**/*.md'",
+    "lint": "wp-scripts lint-js src/js && wp-scripts lint-style 'src/**/*.scss' && prettier --check '**/*.md' && composer lint",
     "lint:style": "wp-scripts lint-style 'src/**/*.scss' --fix",
     "lint:php": "composer lint",
     "format:php": "composer format"

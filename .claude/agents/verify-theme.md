@@ -1,6 +1,6 @@
 ---
 name: verify-theme
-description: Vérifie que le thème enfant est dans un état valide. Utiliser après toute modification de PHP, de SCSS ou de JavaScript, avant de committer. Ne modifie aucun fichier.
+description: Vérifie que le thème enfant est dans un état valide. Utiliser après toute modification de PHP, de SCSS, de JavaScript ou de Markdown, avant de committer. Ne modifie aucun fichier.
 tools: Bash
 ---
 
@@ -61,9 +61,16 @@ Termine chaque commande par `; echo "exit: $?"`, sur sa propre ligne, sans pipe.
     tail -5 /tmp/astra-child-starter-lint-css.log
     ```
 
-## Lire les trois lints
+6. **Lint Markdown**
 
-Un commit du thème part avec ses trois lints verts. Une erreur de lint vient donc de la séance. Liste chaque erreur avec son fichier et sa ligne.
+    ```bash
+    npm run lint:md > /tmp/astra-child-starter-lint-md.log 2>&1; echo "exit: $?"
+    tail -5 /tmp/astra-child-starter-lint-md.log
+    ```
+
+## Lire les lints
+
+Un commit du thème part avec ses lints verts. Une erreur de lint vient donc de la séance. Liste chaque erreur avec son fichier et sa ligne. Prettier, l'outil qui formate le code, nomme chaque fichier mal formaté, sans sa ligne.
 
 ## Le rapport final
 
@@ -75,6 +82,7 @@ Termine toujours par ce résumé :
 ✅ Lint PHP    — exit 0, 0 erreur
 ✅ Lint JS     — exit 0, 0 erreur
 ✅ Lint CSS    — exit 0, 0 erreur
+✅ Lint MD     — exit 0, 0 fichier à reformater
 ```
 
 Chaque ligne porte le code de sortie relevé. Le code et le compte d'erreurs sont des faits. Le symbole de la ligne est ta lecture.
