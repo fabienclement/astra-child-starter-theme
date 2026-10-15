@@ -6,9 +6,15 @@ Une amélioration trouvée sur un projet remonte à la main dans ce starter. Ell
 
 ## Où va le PHP
 
-Chaque sujet prend son fichier dans `inc/`. `functions.php` ne porte qu'un `require_once` par fichier de `inc/`.
+Chaque sujet prend son fichier dans `inc/`. Ce fichier porte des fonctions préfixées par `astra_child_starter_`. `functions.php` ne porte qu'un `require_once` par fichier de `inc/`.
 
 > POURQUOI : relevé le 03/09/2026 sur un thème enfant d'Astra plus ancien. Tout son PHP vit dans un `functions.php` de 1 563 lignes. Shortcodes, gestionnaires AJAX, colonnes d'admin et filtres oEmbed y sont mêlés. Personne n'a choisi cette forme. Le fichier l'a prise faute d'être découpé.
+
+> POURQUOI des fonctions plutôt que des classes chargées par Composer : Fabien déploie chaque site par FTP, fichier par fichier. Le serveur du site ne lance aucun build. Avec l'autoload de Composer, chaque requête dépendrait d'un `vendor/` généré sur la machine de Fabien. Le 15/10/2026, une recherche de Claude a trouvé trois pannes de ce `vendor/`. Chacune de ces trois pannes bloque tout le site. `platform_check.php`, le contrôle de version de Composer, renvoie une erreur 500 sous un PHP antérieur à 8.2. Une table de classes non régénérée ne trouve pas une classe neuve. Un `vendor/composer/` envoyé à moitié ne se charge plus. Le même jour, Claude a lu le code de quatre thèmes de wordpress.org. Aucun de ces quatre thèmes ne charge Composer à l'exécution : Astra 4.14.1, GeneratePress 3.6.1, Kadence 1.5.2 et Blocksy 2.1.59.
+>
+> POURQUOI aucune fonction `setup()` par fichier : `setup()` porterait les `add_action` de son fichier de `inc/`. Brain Monkey, la bibliothèque qui remplace les fonctions de WordPress dans PHPUnit, pourrait alors tester ces hooks. Le starter n'a aucun test PHP. Chaque projet décide de ses tests.
+>
+> Fabien rouvrira ce choix quand un projet devra charger une bibliothèque tierce à l'exécution, ou écrira des tests PHP.
 
 ## Tarteaucitron se charge depuis `build/tarteaucitron/`
 
