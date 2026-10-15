@@ -41,6 +41,14 @@ if ! git rev-parse --git-dir >/dev/null 2>&1; then
 	exit 1
 fi
 
+# `.claude/vault` porte le chemin du dossier du starter dans le vault.
+# `rename.sh` réécrirait ce chemin vers un dossier que le vault n'a pas.
+# `/create-vault-records` écrit le `.claude/vault` du projet neuf.
+# Le dossier `tests/` n'éprouve que `rename.sh`. Un projet neuf n'a pas
+# l'usage de ce dossier.
+rm -f .claude/vault
+rm -rf tests
+
 snake="${nom//-/_}"
 majuscules="$(printf '%s' "$snake" | tr '[:lower:]' '[:upper:]')"
 titre="$(printf '%s' "$nom" | tr '-' ' ' | awk '{ for (i = 1; i <= NF; i++) $i = toupper(substr($i, 1, 1)) substr($i, 2) } 1')"
@@ -98,6 +106,7 @@ if [ -f package-lock.json ]; then
 fi
 
 echo "Renommage fait : ${titre} (${nom}), site local ${url}."
+echo "Lance /create-vault-records depuis ce dépôt, pour déclarer le dossier du projet dans le vault."
 
 # Le relevé final. Sans lui, le script déplacerait le risque d'oubli vers son
 # propre auteur, sans le supprimer.

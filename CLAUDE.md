@@ -36,11 +36,13 @@ Un rouge sur l'une de ces deux règles dit d'ajouter le partiel à ce bloc.
 
 ## Ce qui fait vert
 
-`npm run lint`, puis `npm run build`. `npm run lint` appelle `composer lint`, donc `composer install` doit avoir tourné.
+`npm run lint`, puis `npm run build`. Dans le starter, `tests/rename.test.sh` doit aussi passer. Ce script éprouve `rename.sh` sur une copie des fichiers suivis du dépôt.
+
+`npm run lint` appelle `composer lint`, donc `composer install` doit avoir tourné.
 
 `composer lint` lance PHPCS puis PHPStan. PHPCS contrôle le style, PHPStan les types.
 
-Ce dépôt n'a pas de suite de tests, et il ne tranche pas cette question pour un projet. Chaque projet décide, et écrit son POURQUOI dans son propre `CLAUDE.md`.
+`rename.sh` supprime `tests/` d'un projet neuf. Le starter ne tranche pas la question des tests pour un projet. Chaque projet décide, et écrit son POURQUOI dans son propre `CLAUDE.md`.
 
 > POURQUOI le starter ne tranche pas : la règle par défaut veut qu'un changement de comportement s'accompagne d'un test. Un starter qui affirmerait le contraire installerait cette exception dans chaque projet neuf, sans que personne l'ait décidée.
 
