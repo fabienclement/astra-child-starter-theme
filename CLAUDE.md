@@ -66,6 +66,6 @@ Le seul CSS enfilé est `build/css/main.css`. `style.css` ne porte que son en-t�
 
 ## Git
 
-- Conventional Commits, sujet en anglais, à l'impératif, 72 caractères au plus.
-- Le travail part de `main` sur une branche `feature/<nom-court>`. Il y revient par une pull request.
-- **Une pull request se merge avec ses commits**, jamais en squash : l'historique est fait de commits de merge.
+-   Conventional Commits, sujet en anglais, à l'impératif, 72 caractères au plus.
+-   Le travail part de `main` sur une branche `feature/<nom-court>`. Il y revient par une pull request.
+-   **Une pull request se merge avec ses commits**, jamais en squash : l'historique est fait de commits de merge.
