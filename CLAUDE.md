@@ -22,6 +22,12 @@ L'identifiant de mesure de Google Analytics se définit dans `wp-config.php`, so
 >
 > POURQUOI `CopyWebpackPlugin` plutôt qu'un `&&` dans le script npm : un fichier posé à la main dans `build/` ne survit pas au build suivant. Un fichier émis par le plugin y reste. Mesuré le 06/09/2026, en deux essais.
 
+## Le nom d'une classe suit BEM
+
+La règle `selector-class-pattern` du `.stylelintrc.json` assouplit celle de WordPress. Le motif de WordPress n'accepte que des minuscules, des chiffres et des tirets. Le motif du starter accepte en plus les suffixes BEM, `__element` et `--modificateur`.
+
+Retirer cette règle du `.stylelintrc.json` remet en place le motif de WordPress, plus strict. Seule la valeur `null` éteint la règle.
+
 ## Où va le CSS qui vise du code tiers
 
 Un partiel Sass peut viser une classe d'Astra, d'une extension ou d'un bloc de WordPress. Ce partiel se nomme alors dans le bloc `overrides` de `.stylelintrc.json`. Ce bloc y éteint `selector-class-pattern` et `selector-id-pattern`.
