@@ -32,7 +32,7 @@ Sans cette constante, le service `gtag` ne se déclare pas, et le panneau ne le 
 
 `npm run start` compile en veille et lance Browser-sync, le serveur de développement, sur l'adresse du site local. `npm run build` compile pour la production.
 
-`npm run lint` enchaîne ESLint, Stylelint et `composer lint`. Ce dernier lance PHPCS puis PHPStan. PHPCS contrôle le style du PHP, PHPStan ses types.
+`npm run lint` enchaîne ESLint, Stylelint, Prettier et `composer lint`. Dans `npm run lint`, Prettier, l'outil qui formate le code, contrôle le Markdown du dépôt. `composer lint` lance PHPCS puis PHPStan. PHPCS contrôle le style du PHP, PHPStan ses types.
 
 `npm run lint:style` et `composer format` corrigent ce qui se corrige seul.
 
